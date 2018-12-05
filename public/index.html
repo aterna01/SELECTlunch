@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SELECT * from LUNCH</title>
+  <meta name="description" content="get quotes relating to your emotional state">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19c0fb">
+  <!-- <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico"/> -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Select Lunch</h1>
+    <p>Vote for your communal Wednesday lunch at Space 4</p>
+  </header>
+  <main>
+
+    <form class="food-form" method="post">
+
+        <label for="name">Name</label>
+        <input id="name" class="text-input" type="text" name="name" value="" placeholder= "Enter your name..." autocomplete="off">
+        
+        <label for="food">Food Choice</label>
+        <input id="food" class="text-input" type="text" name="food" value="" placeholder= "Select your food option..." autocomplete="off">
+        <!-- <select>
+            <option value="pizza">Pizza</option>
+        </select> -->
+        <label for="vegetarian">Vegetarian Option?</label>
+        <input id="vegetarian" class="checkbox-input" type="checkbox">
+
+        <label for="paid">Have you paid?</label>
+        <input id="paid" class="checkbox-input" type="checkbox">
+
+        <input class="button-input" type="button" name="submit" value="Request"/>
+    </form>
+      
+  </main>
+  <script type="text/javascript" src="js/request.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
