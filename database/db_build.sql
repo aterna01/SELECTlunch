@@ -4,8 +4,9 @@ DROP TABLE IF EXISTS people cascade;
 
 CREATE TABLE people (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL
 );
+
 
 
   -- DROP TABLE IF EXISTS lunches cascade;
