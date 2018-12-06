@@ -9,56 +9,82 @@ const getData = require('./handler/getData');
 
 // home route
 const handleHomeRoute = (request, response) => {
-    const filePath = path.join(__dirname, "..", "public", "index.html");
-    fs.readFile(filePath, (error, file) => {
-        if (error) {
-        console.log(error);
-        response.writeHead(500, { "Content-Type": "text/html" });
-        response.end("<h1>Sorry, we've had a problem on our end</h1>");
-        } else {
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.end(file);
-        }
-    });
-}
-
+  const filePath = path.join(__dirname, "..", "public", "index.html");
+  fs.readFile(filePath, (error, file) => {
+    if (error) {
+      console.log(error);
+      response.writeHead(500, { "Content-Type": "text/html" });
+      response.end("<h1>Sorry, we've had a problem on our end</h1>");
+    } else {
+      response.writeHead(200, { "Content-Type": "text/html" });
+      response.end(file);
+    }
+  });
+};
 
 // files
 const handlePublic = (request, response, url) => {
-    const filePath = path.join(__dirname, "..", "public", url);
-    const ext = url.split('.')[1];
-    const extType = {
-        html: 'text/html',
-        css: 'text/css',
-        js: 'application/javascript',
-        ico: 'image/x-icon',
-        jpg: 'image/jpeg',
-        png: 'image/png'
+  const filePath = path.join(__dirname, "..", "public", url);
+  const ext = url.split(".")[1];
+  const extType = {
+    html: "text/html",
+    css: "text/css",
+    js: "application/javascript",
+    ico: "image/x-icon",
+    jpg: "image/jpeg",
+    png: "image/png"
+  };
+  fs.readFile(filePath, (error, file) => {
+    if (error) {
+      console.log(error);
+      response.writeHead(404, { "Content-Type": "text/plain" });
+      response.end("<h1>File not found</h1>");
+    } else {
+      response.writeHead(200, { "Content-Type": `${extType[ext]}` });
+      response.end(file);
     }
-    fs.readFile(filePath, (error, file) => {
-        if (error) {
-        console.log(error);
-        response.writeHead(404, { "Content-Type": "text/plain" });
-        response.end("<h1>File not found</h1>");
-        } else {
-        response.writeHead(200,  {  "Content-Type" : `${extType[ext]}` } );
-        response.end(file);
-        }
-    });
-}
+  });
+};
 
 
 
 // XMLHttpRequests - get data from database etc.
-const handlePartners = (request, repsponse) => {
-    // something to call sql functions to get stuff from database goes here...
-}
+const handlePartners = (request, response) => {
+  // something to call sql functions to get stuff from database goes here...
+};
 
 
 
+// const handlePostData = (request, response) => {
+//     console.log("this is a post request in the handlePostData handler");
+//     if (request.method == "POST") {
+//       var inputReceived = "";
+  
+//       request.on("data", function(data) {
+//         inputReceived += data;
+//       });
+  
+//       request.on("end", function() {
+//         console.log(JSON.parse(inputReceived));   
+        
+//         postData(inputReceived, (err, res) => {
+//           if (err) console.log(err);
+  
+//           // run AFTER postData is run - get latest item output to DOM
+//           getData((err, res) => {
+//             if (err) throw err;
+//             let output = JSON.stringify(res);
+//             response.writeHead(200, { "Content-Type": "application/JSON" });
+//             response.end(output);
+//           });
+//         });
+
+//       });
+//     }
+//   };
 
 
-const handlePost = (request, response) => {
+const handlePostData = (request, response) => {
 
     // standard form behaviour - data gets sent to a new webpage in html format
      
@@ -70,34 +96,26 @@ const handlePost = (request, response) => {
     });
 
     request.on('end', function () {
-        // parse form data
+        // use form data
         const formData = allTheData.split(',');
-        
+        const person = formData[0];
 
+        console.log(person);
+        
         // post to db
-        postData(formData, (err, res) => {
+        // - args will be: person, food, veg, paid
+        postData(person, (err, res) => {
             if (err) console.log(err);
-
-            // use this to populate tables
-            console.log(formData);
-
-
-            // get data after form post
-            // getData()
-
+            
+            // run AFTER postData is run - get latest item output to DOM
+            getData((err, res) => {
+                if (err) throw err;
+                let output = JSON.stringify(res);
+                response.writeHead(200, { "Content-Type": "application/JSON" });
+                response.end(output);
+            });
         })
-        // allTheData.map(item, i => console.log(item[i]));
 
-        // console.log(JSON.parse(allTheData));
-
-        
-        // const convertedPost = querystring.parse(allTheData);
-        // console.log(convertedPost);
-        
-        // // handle redirect?
-        // // - 301 keeps it on the same page
-        // response.writeHead(301, {"Location": "/"});
-        // response.end()
     });
 }
 
@@ -105,8 +123,8 @@ const handlePost = (request, response) => {
 
 // export all of this
 module.exports = {
-    handleHomeRoute,
-    handlePublic,
-    handlePartners,
-    handlePost
-}
+  handleHomeRoute,
+  handlePublic,
+  handlePartners,
+  handlePostData
+};

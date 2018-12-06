@@ -8,7 +8,12 @@ const postRequest = (formData) => {
         const result = JSON.parse(xhr.responseText);
         // callback function
         // imgCallback(imgResult);
+
+        
+        
+        // parse the result???
         console.log(result);
+        insertInDOM(result);
 
       }
     };

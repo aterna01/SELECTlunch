@@ -19,10 +19,8 @@ const router = (req, res) => {
   } else if (url.indexOf("/data") !== -1) {
     handlers.handlePartners(req, res);
   } else if (method === "POST" && url.includes("/sendDetails")) {
-
-    // console.log(req);
-    // console.log("this is a post request");
-    handlers.handlePost(req, res);
+    console.log("this is a post request");
+    handlers.handlePostData(req, res);
   } else {
     res.writeHead(404, "Content-Type: text/html");
     res.end("<h1>404 File not found</h1>");
