@@ -2,6 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const request = require("request");
 
+// use querystring
+const querystring = require('querystring');
+
 
 // home route
 const handleHomeRoute = (request, response) => {
@@ -52,9 +55,40 @@ const handlePartners = (request, repsponse) => {
 
 
 
+
+
+const handlePost = (request, response) => {
+     
+    // receive data from the form
+    let allTheData = '';
+    request.on('data', function (chunkOfData) {
+        // text from form
+        allTheData += chunkOfData;
+    });
+
+    request.on('end', function () {
+        // parse form data
+        // console.log(allTheData);
+
+        // console.log(JSON.parse(allTheData));
+
+        
+        const convertedPost = querystring.parse(allTheData);
+        console.log(convertedPost);
+        
+        // handle redirect?
+        // - 301 keeps it on the same page
+        response.writeHead(301, {"Location": "/"});
+        response.end()
+    });
+}
+
+
+
 // export all of this
 module.exports = {
     handleHomeRoute,
     handlePublic,
-    handlePartners
+    handlePartners,
+    handlePost
 }
