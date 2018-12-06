@@ -8,6 +8,12 @@ form.addEventListener("submit", e => {
   postRequest(JSON.stringify(nameInput));
 });
 
-const insertInDOM = function(element) {
-  const newName = document.createElement("P");
+// insert database info from DOM
+const insertInDOM = function(data) {
+  const ul = document.querySelector("#people_list ul");
+  const list = data.map(item => `<li> ${item.name} </li>`).join("");
+  ul.innerHTML = list;
+
+  // clear the form values
+  form.reset();
 };
