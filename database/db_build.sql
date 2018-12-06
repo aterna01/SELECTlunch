@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS people cascade;
 
 CREATE TABLE people (
   people_id SERIAL PRIMARY KEY NOT NULL,
-  name_id VARCHAR(100) NOT NULL
+  name VARCHAR(100) NOT NULL
 );
 
   DROP TABLE IF EXISTS lunches cascade;
@@ -29,5 +29,5 @@ CREATE TABLE people (
     vegy BOOLEAN,
     paid BOOLEAN
   );
-  
+
 COMMIT;
