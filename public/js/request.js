@@ -1,7 +1,7 @@
 
 
 
-const postRequest = (getLunch) => {
+const postRequest = (formData) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -13,5 +13,5 @@ const postRequest = (getLunch) => {
       }
     };
     xhr.open("POST", '/sendDetails', true);
-    xhr.send(getLunch);
+    xhr.send(formData);
 };

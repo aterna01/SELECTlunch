@@ -11,11 +11,9 @@ form.addEventListener("submit", e => {
     const isPaid = e.target[3].checked;
 
     const formInfo = [nameInput, foodInput, isVeg, isPaid];
-    console.log(formInfo);
+    // console.log(formInfo);
 
-
-
-    // // compose object
+    // // compose object - attempt to use formData constructor function
     // const formData = new FormData();
     // formData.append('name', nameInput);
     // formData.append('food', foodInput);
@@ -27,10 +25,6 @@ form.addEventListener("submit", e => {
     //     console.log(pair[0]+ ', '+ pair[1]); 
     // }
 
-    // send it to the request (request.js)
-    // postRequest(formData);
-    const request = new XMLHttpRequest();
-    request.open("POST", "/sendDetails");
-    request.send(new FormData(form));
+    postRequest(formInfo);
 
 });

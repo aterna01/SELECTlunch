@@ -2,8 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const request = require("request");
 
-// use querystring
-const querystring = require('querystring');
+// getData and postData
+const postData = require('./handler/postData');
+const getData = require('./handler/getData');
 
 
 // home route
@@ -58,28 +59,45 @@ const handlePartners = (request, repsponse) => {
 
 
 const handlePost = (request, response) => {
+
+    // standard form behaviour - data gets sent to a new webpage in html format
      
     // receive data from the form
     let allTheData = '';
     request.on('data', function (chunkOfData) {
-        // text from form
+        // text from form - outputs buffers
         allTheData += chunkOfData;
     });
 
     request.on('end', function () {
         // parse form data
-        // console.log(allTheData);
+        const formData = allTheData.split(',');
+        
+
+        // post to db
+        postData(formData, (err, res) => {
+            if (err) console.log(err);
+
+            // use this to populate tables
+            console.log(formData);
+
+
+            // get data after form post
+            // getData()
+
+        })
+        // allTheData.map(item, i => console.log(item[i]));
 
         // console.log(JSON.parse(allTheData));
 
         
-        const convertedPost = querystring.parse(allTheData);
-        console.log(convertedPost);
+        // const convertedPost = querystring.parse(allTheData);
+        // console.log(convertedPost);
         
-        // handle redirect?
-        // - 301 keeps it on the same page
-        response.writeHead(301, {"Location": "/"});
-        response.end()
+        // // handle redirect?
+        // // - 301 keeps it on the same page
+        // response.writeHead(301, {"Location": "/"});
+        // response.end()
     });
 }
 
