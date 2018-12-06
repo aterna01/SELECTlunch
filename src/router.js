@@ -18,6 +18,8 @@ const router = (req, res) => {
     handlers.handlePublic(req, res, url);
   } else if (url.indexOf("/data") !== -1) {
     handlers.handlePartners(req, res);
+  } else if (url.indexOf("/getFoods") !== -1) {
+    handlers.handleFoods(req, res);
   } else if (method === "POST" && url.includes("/sendDetails")) {
     console.log("this is a post request");
     handlers.handlePostData(req, res);

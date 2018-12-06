@@ -1,5 +1,7 @@
 const form = document.querySelector(".food-form");
 
+
+// form submit event
 form.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -19,7 +21,7 @@ form.addEventListener("submit", e => {
 
 
 
-// insert database info from DOM
+// insert database info from DOM - after form submit
 const insertInDOM = function(data) {
   const ul = document.querySelector("#people_list ul");
   const list = data.map(item => `<li> ${item.name} </li>`).join("");
@@ -28,3 +30,15 @@ const insertInDOM = function(data) {
   // clear the form values
   form.reset();
 };
+
+
+
+
+// populate dropdown - on load
+const populateSelect = function(data) {
+    const ul = document.querySelector("#food");
+    const list = data.map(item => `<li> ${item.name} </li>`).join(""); // change to food later
+    ul.innerHTML = list;
+};
+// populate on load
+getRequest();

@@ -6,6 +6,9 @@ const request = require("request");
 const postData = require('./handler/postData');
 const getData = require('./handler/getData');
 
+// output foods on GET
+const getFoods = require('./handler/getFoods');
+
 
 // home route
 const handleHomeRoute = (request, response) => {
@@ -48,6 +51,8 @@ const handlePublic = (request, response, url) => {
 
 
 
+
+// _____________________________________________
 // XMLHttpRequests - get data from database etc.
 const handlePartners = (request, response) => {
   // something to call sql functions to get stuff from database goes here...
@@ -55,33 +60,27 @@ const handlePartners = (request, response) => {
 
 
 
-// const handlePostData = (request, response) => {
-//     console.log("this is a post request in the handlePostData handler");
-//     if (request.method == "POST") {
-//       var inputReceived = "";
-  
-//       request.on("data", function(data) {
-//         inputReceived += data;
-//       });
-  
-//       request.on("end", function() {
-//         console.log(JSON.parse(inputReceived));   
-        
-//         postData(inputReceived, (err, res) => {
-//           if (err) console.log(err);
-  
-//           // run AFTER postData is run - get latest item output to DOM
-//           getData((err, res) => {
-//             if (err) throw err;
-//             let output = JSON.stringify(res);
-//             response.writeHead(200, { "Content-Type": "application/JSON" });
-//             response.end(output);
-//           });
-//         });
 
-//       });
-//     }
-//   };
+
+// output foods on page load - GET
+const handleFoods = (request, response) => {
+  getFoods((err, res) => {
+    if (err) throw err;
+    let output = JSON.stringify(res);
+
+    console.log(output);
+
+    response.writeHead(200, { "Content-Type": "application/JSON" });
+    response.end(output);
+  });
+
+
+}
+
+
+
+
+
 
 
 const handlePostData = (request, response) => {
@@ -125,6 +124,7 @@ const handlePostData = (request, response) => {
 module.exports = {
   handleHomeRoute,
   handlePublic,
+  handleFoods,
   handlePartners,
   handlePostData
 };
