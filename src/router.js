@@ -1,6 +1,8 @@
 const handlers = require("./handlers.js");
 
 const routes = [
+  "/img/favicon.ico",
+  "/img/pizza_bg_pale.jpg",
   "/css/main.css",
   "/css/reset.css",
   "/js/request.js",
