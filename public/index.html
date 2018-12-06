@@ -6,7 +6,7 @@
   <meta name="description" content="get quotes relating to your emotional state">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#19c0fb">
-  <!-- <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico"/> -->
+  <link rel="shortcut icon" type="image/x-ico" href="img/favicon.ico"/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/reset.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -22,15 +22,10 @@
       <form class="food-form" method="post" action="/sendDetails">
 
         <label for="name">Name</label>
-        <input id="name" class="text-input" type="text" name="name" value="" placeholder= "Enter your name..." autocomplete="off">
+        <input id="name" class="text-input" type="text" name="name" value="" placeholder= "Enter your name..." autocomplete="off" pattern="[a-zA-Z'\s]{0,40}">
 
         <label for="food">Food Choice</label>
-        <select id="food" class="select-input" name="food">
-          <option value="" disabled selected>Select your food option...</option>
-          <option value="pizza">Pizza</option>
-          <option value="curry">Curry</option>
-        </select>
-        <!-- <input id="food" class="text-input" type="text" name="food" value="" placeholder= "Select your food option..." autocomplete="off"> -->
+        <select id="food" class="select-input" name="food"></select>
 
         <label for="vegetarian">Vegetarian Option?</label>
         <input id="vegetarian" class="checkbox-input" type="checkbox" name="vegetarian">
