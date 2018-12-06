@@ -25,7 +25,6 @@ const getRequest = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       const result = JSON.parse(xhr.responseText);
       // parse the result???
-      console.log(result[0].name);
       populateSelect(result);
 
     }

@@ -37,8 +37,15 @@ const insertInDOM = function(data) {
 // populate dropdown - on load
 const populateSelect = function(data) {
     const ul = document.querySelector("#food");
-    const list = data.map(item => `<li> ${item.name} </li>`).join(""); // change to food later
+    const defaultItem = '<option value="" disabled selected>Select your food option...</option>';
+
+    let list = data.map(item => `<option value="${item.lunch.toLowerCase()}"> ${item.lunch} </option>`);
+    list.unshift(defaultItem);
+    list.join("");
     ul.innerHTML = list;
 };
 // populate on load
+// populateSelect();
+
+// run request
 getRequest();
