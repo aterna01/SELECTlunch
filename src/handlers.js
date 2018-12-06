@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const request = require("request");
+const postData = require("./handler/postData");
 
 // home route
 const handleHomeRoute = (request, response) => {
@@ -52,6 +53,9 @@ const handlePostData = (request, response) => {
 
     request.on("end", function() {
       console.log(JSON.parse(inputReceived));
+      postData(inputReceived, (err, res) => {
+        if (err) console.log(err);
+      });
     });
   }
 };
