@@ -1,15 +1,8 @@
-
-
-
 const postRequest = (formData) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
         const result = JSON.parse(xhr.responseText);
-        // callback function
-        // imgCallback(imgResult);
-
-        
         
         // parse the result???
         console.log(result);
@@ -19,4 +12,23 @@ const postRequest = (formData) => {
     };
     xhr.open("POST", '/sendDetails', true);
     xhr.send(formData);
+};
+
+
+
+
+
+// populate select from db on load
+const getRequest = () => {
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const result = JSON.parse(xhr.responseText);
+      // parse the result???
+      populateSelect(result);
+
+    }
+  };
+  xhr.open("GET", '/getFoods', true);
+  xhr.send();
 };

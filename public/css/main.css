@@ -27,13 +27,13 @@ body {
 
 h1 {
     font-size: 3rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.6;
 }
 
 h2 {
     font-size : 2.35rem;
-    font-weight : 600;
+    font-weight : 700;
     line-height : 1.5;
 }
 
@@ -56,7 +56,7 @@ a {
 
 /* general spacing */
 header,
-section {
+.main-section {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
@@ -76,19 +76,23 @@ header {
 
 
 
-/* search-form */
+
 .food-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+.food-form label {
+    font-size: 1.25rem;
+}
+
 
 /* submit button */
 .button-input {
+    align-self: flex-end;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5rem;
-    margin-left : 1.5rem;
     padding: 1rem;
     box-sizing: border-box;
     border: 0;
@@ -108,12 +112,14 @@ header {
 
 
 
-/* text input */
-.text-input {
+/* text and select input */
+.text-input,
+.select-input {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5rem;
     width: 100%;
     display: block;
+    margin-bottom: 1rem;
     padding: 1rem 0.5rem;
     box-sizing: border-box;
     border-radius: 0.5rem;
@@ -121,5 +127,15 @@ header {
 }
 .text-input:focus,
 .text-input:active {
-    border: 1px solid lightseagreen;
+    border: 4px solid var(--blue-hover);
+}
+
+/* select input */
+.select-input {
+    height: 4.5rem;
+}
+
+/* checkbox input */
+.checkbox-input {
+    margin-bottom: 1rem;
 }

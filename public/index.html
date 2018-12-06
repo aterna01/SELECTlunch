@@ -18,16 +18,20 @@
   </header>
   <main>
 
-    <form class="food-form" method="post" action="/sendDetails">
+    <section class="main-section">
+      <form class="food-form" method="post" action="/sendDetails">
 
         <label for="name">Name</label>
         <input id="name" class="text-input" type="text" name="name" value="" placeholder= "Enter your name..." autocomplete="off">
 
         <label for="food">Food Choice</label>
-        <input id="food" class="text-input" type="text" name="food" value="" placeholder= "Select your food option..." autocomplete="off">
-        <!-- <select>
-            <option value="pizza">Pizza</option>
-        </select> -->
+        <select id="food" class="select-input" name="food">
+          <option value="" disabled selected>Select your food option...</option>
+          <option value="pizza">Pizza</option>
+          <option value="curry">Curry</option>
+        </select>
+        <!-- <input id="food" class="text-input" type="text" name="food" value="" placeholder= "Select your food option..." autocomplete="off"> -->
+
         <label for="vegetarian">Vegetarian Option?</label>
         <input id="vegetarian" class="checkbox-input" type="checkbox" name="vegetarian">
 
@@ -36,7 +40,10 @@
 
         <input class="button-input" type="submit" name="submit" value="Request"/>
     </form>
-    <section id ='people_list'>
+    </section>
+
+    
+    <section id="people_list" class="main-section">
       <ul></ul>
     </section>
 
