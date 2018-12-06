@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const request = require("request");
 const postData = require("./handler/postData");
+const getData = require("./handler/getData");
 
 // home route
 const handleHomeRoute = (request, response) => {
@@ -55,6 +56,14 @@ const handlePostData = (request, response) => {
       console.log(JSON.parse(inputReceived));
       postData(inputReceived, (err, res) => {
         if (err) console.log(err);
+
+        // run AFTER postData is run - get latest item output to DOM
+        getData((err, res) => {
+          if (err) throw err;
+          let output = JSON.stringify(res);
+          response.writeHead(200, { "Content-Type": "application/JSON" });
+          response.end(output);
+        });
       });
     });
   }
