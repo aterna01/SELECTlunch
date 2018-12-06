@@ -1,4 +1,6 @@
 const dbConnection = require("../../database/db_connection.js");
+
+// - args will be: person(name), food, veg, paid
 const postData = (name, cb) => {
   dbConnection.query(
     "INSERT INTO people (name) VALUES ($1)",

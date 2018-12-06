@@ -1,12 +1,23 @@
 const form = document.querySelector(".food-form");
 
 form.addEventListener("submit", e => {
-  e.preventDefault();
-  //assigns value of name input
-  const nameInput = e.target[0].value;
+    e.preventDefault();
 
-  postRequest(JSON.stringify(nameInput));
+    // get form data
+    const nameInput = e.target[0].value;
+    const foodInput = e.target[1].value;
+    const isVeg = e.target[2].checked;
+    const isPaid = e.target[3].checked;
+
+    const formInfo = [nameInput, foodInput, isVeg, isPaid];
+    
+    // NOTE: does this need a string RATHER than an array?
+    postRequest(formInfo);
+
 });
+
+
+
 
 // insert database info from DOM
 const insertInDOM = function(data) {
