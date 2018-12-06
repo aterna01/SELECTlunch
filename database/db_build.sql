@@ -20,7 +20,6 @@ CREATE TABLE people (
          ('Chinese'),
          ('Indian');
 
-
   DROP TABLE IF EXISTS bookings cascade;
 
   CREATE TABLE bookings (
@@ -30,5 +29,5 @@ CREATE TABLE people (
     vegy BOOLEAN,
     paid BOOLEAN
   );
-
+  
 COMMIT;
