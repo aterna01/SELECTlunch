@@ -4,10 +4,15 @@ form.addEventListener("submit", e => {
     e.preventDefault();
 
     // get form data
-    // const nameInput = e.target[0].value;
-    // const foodInput = e.target[1].value;
-    // const isVeg = e.target[2].checked;
-    // const isPaid = e.target[3].checked;
+    
+    const nameInput = e.target[0].value;
+    const foodInput = e.target[1].value;
+    const isVeg = e.target[2].checked;
+    const isPaid = e.target[3].checked;
+
+    const formInfo = [nameInput, foodInput, isVeg, isPaid];
+    console.log(formInfo);
+
 
 
     // // compose object
