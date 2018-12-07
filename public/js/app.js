@@ -14,7 +14,8 @@ form.addEventListener("submit", e => {
     const formInfo = [nameInput, foodInput, isVeg, isPaid];
     
     // NOTE: does this need a string RATHER than an array?
-    postRequest(formInfo);
+    // postRequest(formInfo); - old version
+    requestFunction("POST", '/sendDetails', insertInDOM, formInfo);
 
 });
 
@@ -44,11 +45,10 @@ const populateSelect = function(data) {
     list.join("");
     ul.innerHTML = list;
 };
-// populate on load
-// populateSelect();
 
-// run request
-getRequest();
+// run request - populate dropdown on load
+// getRequest(); - old version
+requestFunction("GET", '/getFoods', populateSelect);
 
 
 
