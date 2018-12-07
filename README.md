@@ -17,11 +17,13 @@
 - [ ] set up a test database so that you can test your database queries
 
 ## Installation
-npm install 
-npm install -g nodemon
+- Clone the project to your local machine
+- ```npm install``` 
+(npm install -g nodemon
 npm install tape --save-dev
 npm install tap-spec --save-dev
-npm install supertest --save-dev
+npm install supertest --save-dev)
+- create a ```config.env``` file in the root directory and ask for us for the URL to paste inside! 🙏
 
 ## Dependencies
 - **Tape** for testing
