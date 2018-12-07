@@ -18,8 +18,6 @@ const router = (req, res) => {
     handlers.handleHomeRoute(req, res);
   } else if (routes.includes(url)) {
     handlers.handlePublic(req, res, url);
-  } else if (url.indexOf("/data") !== -1) {
-    handlers.handlePartners(req, res);
   } else if (url.indexOf("/getFoods") !== -1) {
     handlers.handleFoods(req, res);
   } else if (method === "POST" && url.includes("/sendDetails")) {
