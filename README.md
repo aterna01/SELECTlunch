@@ -4,12 +4,12 @@
 ## Initial Requirements
 ### Requirements
 
-- [ ] Simple web app with a node server and a database
-- [ ] Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions)
-- [ ] Database hosted on Heroku, or locally
-- [ ] Build script for your database
+- [x] Simple web app with a node server and a database
+- [x] Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions)
+- [x] Database hosted on Heroku, or locally
+- [x] Build script for your database
 - [ ] Security concerns appropriately considered (you must protect against script injections!)
-- [ ] Content dynamic, but DOM manipulation kept to a minimum
+- [x] Content dynamic, but DOM manipulation kept to a minimum
 - [ ] Mobile-first design
 - [ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
 - [ ] test your server routes with supertest
@@ -32,6 +32,8 @@ npm install supertest --save-dev)
 - **Supertest** for testing requests
 
 ## Known bugs/issues
+- we don't yet send all data to the right databases
+- possible to input empty string
 
 ## Our Process
 
@@ -43,31 +45,33 @@ npm install supertest --save-dev)
 
 ![](https://i.imgur.com/w39Tfxr.jpg)
 
+![](https://i.imgur.com/tMrNvty.png)
+
 
 
 #### Plan of attack! 💪
 - [x] 1. Create Github repo ✅
 - [x] 2. Create overarching file structure (see below) ✅
-- [ ] 3. Create database table structure
+- [x] 3. Create database table structure
 - [ ] 4. 🎨 Break time - Colour scheme 🎨
-- [ ] 5. Create HTML basic structure
-- [ ] 6. Create basic server
+- [x] 5. Create HTML basic structure
+- [=x ] 6. Create basic server
     - [x] server.js
-    - [ ] router.js
-        - [ ] root
-        - [ ] public
-        - [ ] getData
-        - [ ] postData
-    - [ ] handler.js
-- [ ] 7. On load 
-    - [ ] Get request for lunch data for dropdown
+    - [x] router.js
+        - [x] root
+        - [x] public
+        - [x] getData
+        - [x] postData
+    - [x] handler.js
+- 7. On load 
+    - [x] Get request for lunch data for dropdown
         - (to be broken down further)
     - [ ] Get request for booked data to be put into list
         - (to be broken down further)
-- [ ] 8. On submit button
-    - [ ] Post request to put input into database
+- 8. On submit button
+    - [x] Post request to put input into database
         - (to be broken down further)
-    - [ ] Get request for new data to be put into list
+    - [x] (kind of) Get request for new data to be put into list
         - (to be broken down further)
 
 #### File structure
@@ -90,15 +94,32 @@ npm install supertest --save-dev)
     - [x] display it in the dom
 3. - [x] Receive all data from the frontend in the backend
     - [x] create new table for lunches with potential lunches (read only)
-    - [ ] create new table for bookings
-    - [ ] get lunches as a dropdown
+    - [x] create new table for bookings
+    - [x] get lunches as a dropdown
+
+4. - [ ] Figure out how to use foreign keys
 
 
+
+
+
+
+
+
+
+
+## Presentation!
+- Demo website
+- Whiteboarding/planning (Susan)
 
 #### What we struggled with
-- formData()!
+- formData()! (Martin)
 - testing
-- Sweet jesus trying to return the foreign key of another table THE WORST
+- Sweet jesus trying to return the foreign key of another table THE WORST (Oliver)
 
 #### What we're proud of 
+- Creating databases (susan)
+- Starting with whiteboarding/discussion
 - discovering that POST requests can not only send but also return data
+- Accidental good accessibility score
+![](https://user-images.githubusercontent.com/37771591/49643008-7e480200-fa0c-11e8-840b-711470e611a6.png)
