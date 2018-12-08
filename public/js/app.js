@@ -24,10 +24,10 @@ form.addEventListener("submit", e => {
 
 // insert database info from DOM - after form submit
 const insertInDOM = function(data) {
-    console.log(data);
+    // console.log(data);
 
     const ul = document.querySelector("#people_list ul");
-    const list = data.map(item => `<li> ${item.name} <span class="lunch">Food:</span> <span class="veg">Vegetarian:</span> <span class="paid">Paid:</span> </li>`).join("");
+    const list = data.map(item => `<li> ${item.name} <span class="lunch">Food: ${item.lunch}</span> ${item.vegy ? '<span class="veg">Vegetarian</span>' : ''} ${item.paid ? '<span class="paid">Paid</span>' : ''} </li>`).join("");
     ul.innerHTML = list;
 
     // clear the form values

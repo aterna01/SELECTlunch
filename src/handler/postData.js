@@ -37,7 +37,7 @@ const postData = (formData, cb) => {
     "INSERT INTO people (name) VALUES ($1) RETURNING people_id",
     [name],
     (err, personId) => {
-      // console.log(personId); // logs out object for person
+      // console.log(personId); // logs out object for person, passed into bookings
       if (err) {
         return err;
       } else {
@@ -57,9 +57,14 @@ const postData = (formData, cb) => {
             dbConnection.query(
               "INSERT INTO bookings (people_id, lunch_id, vegy, paid) VALUES ($1, $2, $3, $4)",
               [personId.rows[0].people_id, result.rows[0].lunch_id, veg, paid],
-              fail => {
-                // console.log("bookings table working");
-                if (fail) return fail;
+              (fail, success) => {
+                if (fail) {
+                  return fail;
+                } else {
+                  // console.log("bookings table working");
+                  // want to run getData, but from handlers.js
+                  cb(null); // this kills this function, and returns to handlers.js
+                }
               }
             );
 
