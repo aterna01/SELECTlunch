@@ -55,14 +55,13 @@ const handlePublic = (request, response, url) => {
 const handleFoods = (request, response) => {
   getFoods((err, res) => {
     if (err) throw err;
-    let output = JSON.stringify(res);
-
-    console.log(output);
-
+    const output = JSON.stringify(res);
     response.writeHead(200, { "Content-Type": "application/JSON" });
     response.end(output);
   });
 };
+
+
 
 const handlePostData = (request, response) => {
   // standard form behaviour - data gets sent to a new webpage in html format
@@ -77,23 +76,26 @@ const handlePostData = (request, response) => {
   request.on("end", function() {
     // use form data
     const formData = allTheData.split(",");
-    const person = formData[0];
-
-    console.log(person);
 
     // post to db
     // - args will be: person, food, veg, paid
-    postData(person, (err, res) => {
+    postData(formData, (err, res) => {
       if (err) console.log(err);
+      // const postResult = res;
+
 
       // run AFTER postData is run - get latest item output to DOM
+      // ...but that doesn't seem to work
       getData((err, res) => {
         if (err) throw err;
-        let output = JSON.stringify(res);
+        const output = JSON.stringify(res);
         response.writeHead(200, { "Content-Type": "application/JSON" });
         response.end(output);
-      });
-    });
+      })
+
+    })
+
+
   });
 };
 
